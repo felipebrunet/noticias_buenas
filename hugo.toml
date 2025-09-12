@@ -1,4 +1,4 @@
-baseURL = "https://example.org/"
+baseURL = "https://felipebrunet.github.io/noticias_buenas/"
 defaultContentLanguage = "en"
 # Automatically generate robots.txt
 enableRobotsTXT = true
