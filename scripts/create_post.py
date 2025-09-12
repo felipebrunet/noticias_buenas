@@ -1,5 +1,6 @@
 import os
 import datetime
+import sys
 import google.generativeai as genai
 import re
 
@@ -18,12 +19,15 @@ def create_new_post():
     """
     if not API_KEY:
         print("Error: GEMINI_API_KEY environment variable not set.")
-        return
+        sys.exit(1)
+
+    # Ensure the posts directory exists before trying to write to it
+    os.makedirs(POSTS_DIR, exist_ok=True)
 
     try:
         # Configure the Gemini client
         genai.configure(api_key=API_KEY)
-        model = genai.GenerativeModel('gemini-pro')
+        model = genai.GenerativeModel('gemini-1.5-flash-latest')
 
         print("Querying Gemini API...")
         response = model.generate_content(PROMPT)
@@ -58,6 +62,7 @@ type: "post"
 
     except Exception as e:
         print(f"An error occurred: {e}")
+        sys.exit(1)
 
 if __name__ == "__main__":
     create_new_post()
