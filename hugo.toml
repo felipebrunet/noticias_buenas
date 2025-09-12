@@ -4,7 +4,7 @@ defaultContentLanguage = "en"
 enableRobotsTXT = true
 languageCode = "en"
 theme = "gokarna"
-title = "buenas noticias"
+title = "Noticias Buenas"
 
 [params]
   # Display posts on the home page:
@@ -15,6 +15,9 @@ title = "buenas noticias"
 
   # Define how many posts are displayed on the home page
   numberPostsOnHomePage = 3
+
+  # Footer text (i.e. author/project name)
+  footer = "Noticias Buenas"
 [menu]
   [[menu.main]]
     # Display name
@@ -38,7 +41,7 @@ title = "buenas noticias"
     identifier = "github"
 
     # Absolute URL to external resource
-    url = "https://github.com"
+    url = "https://github.com/felipebrunet/noticias_buenas"
     weight = 3
     
     # Surround the menu entry (or name) with HTML content, such as Feather
