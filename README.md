@@ -1,0 +1,1 @@
+A site that displays automated relevant news.
