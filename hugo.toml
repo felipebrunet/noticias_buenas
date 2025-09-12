@@ -6,6 +6,15 @@ languageCode = "en"
 theme = "gokarna"
 title = "buenas noticias"
 
+[params]
+  # Display posts on the home page:
+  # "popular" (order posts by weight)
+  # "recent" (order posts by date)
+  # "", unset (do not display)
+  showPostsOnHomePage = "recent"
+
+  # Define how many posts are displayed on the home page
+  numberPostsOnHomePage = 3
 [menu]
   [[menu.main]]
     # Display name
