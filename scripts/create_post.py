@@ -9,7 +9,7 @@ import re
 # Get the API key from the environment variable set in GitHub Actions
 API_KEY = os.getenv("GEMINI_API_KEY")
 # The question to ask Gemini. We ask it to provide a title on the first line.
-PROMPT = "Dime una noticia relevante que haya ocurrido acerca de la economía del mundo. Tu texto debe tener en la primera línea un título de máximo 4 palabras y a partir de la segunda línea, el contenido, indicando la URL de la o las fuentes."
+PROMPT = "Dime una noticia relevante que haya ocurrido acerca de la economía del mundo en la última semana. Tu texto debe tener en la primera línea un título de máximo 4 palabras y a partir de la segunda línea, el contenido, indicando la URL de la o las fuentes."
 # The directory where Hugo posts are stored
 POSTS_DIR = "content/posts"
 # --- End Configuration ---
@@ -28,7 +28,7 @@ def create_new_post():
     try:
         # Configure the Gemini client
         genai.configure(api_key=API_KEY)
-        model = genai.GenerativeModel('gemini-1.5-flash-latest')
+        model = genai.GenerativeModel('gemini-2.5-flash')
 
         print("Querying Gemini API...")
         response = model.generate_content(PROMPT)
