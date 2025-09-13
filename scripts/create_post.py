@@ -2,13 +2,14 @@ import os
 import datetime
 import sys
 import google.generativeai as genai
+import unicodedata
 import re
 
 # --- Configuration ---
 # Get the API key from the environment variable set in GitHub Actions
 API_KEY = os.getenv("GEMINI_API_KEY")
 # The question to ask Gemini. We ask it to provide a title on the first line.
-PROMPT = "Tell me a short, positive, and interesting news story or fact. The story should be suitable for a blog post. Start the response with a catchy title on the first line, and only the title."
+PROMPT = "Dime una noticia relevante que haya ocurrido acerca de la economía del mundo. Tu texto debe tener en la primera línea un título de máximo 4 palabras y a partir de la segunda línea, el contenido, indicando la URL de la o las fuentes."
 # The directory where Hugo posts are stored
 POSTS_DIR = "content/posts"
 # --- End Configuration ---
@@ -38,8 +39,12 @@ def create_new_post():
         body = parts[1].strip() if len(parts) > 1 else "No content was generated."
 
         # Create a slug from the title (e.g., "My Great Story" -> "my-great-story")
-        slug = re.sub(r'[^\w\s-]', '', title).strip().lower()
-        slug = re.sub(r'[-\s]+', '-', slug)
+        # Transliterate characters to their basic ASCII representation (e.g., "acción" -> "accion")
+        normalized_title = unicodedata.normalize('NFD', title)
+        ascii_title = normalized_title.encode('ascii', 'ignore').decode('utf-8')
+        
+        slug = re.sub(r'[^\w\s-]', '', ascii_title).strip().lower() # Remove remaining non-alphanumeric characters
+        slug = re.sub(r'[-\s]+', '-', slug) # Replace spaces and hyphens with a single hyphen
         
         today = datetime.date.today()
         filename = f"{today.strftime('%Y-%m-%d')}-{slug}.md"
