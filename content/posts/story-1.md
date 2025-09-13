@@ -6,4 +6,4 @@ type: "post"
 description: "The first story of this great news site."
 ---
 
-Today (September 12, 2025), the first story of this great news site has been posted. Thanks for reading.
+Hoy 12 de septiembre de 2025 he publicado la primera noticia en este portal automatizado. Gracias por leer!
