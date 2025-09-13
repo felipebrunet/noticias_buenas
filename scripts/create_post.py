@@ -9,7 +9,7 @@ import re
 # Get the API key from the environment variable set in GitHub Actions
 API_KEY = os.getenv("GEMINI_API_KEY")
 # The question to ask Gemini. We ask it to provide a title on the first line.
-PROMPT = "Dime una noticia relevante que haya ocurrido acerca de la economía del mundo en la última semana. Tu texto debe tener en la primera línea un título de máximo 4 palabras y a partir de la segunda línea, el contenido, indicando la URL de la o las fuentes."
+PROMPT = "Dime una noticia relevante de entre 2000 y hoy del mundo. Tu texto debe tener en la primera línea un título de máximo 4 palabras y a partir de la segunda línea, el contenido, indicando la URL de la o las fuentes."
 # The directory where Hugo posts are stored
 POSTS_DIR = "content/posts"
 # --- End Configuration ---
