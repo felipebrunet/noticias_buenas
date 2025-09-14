@@ -9,10 +9,24 @@
     <lastBuildDate>Sun, 14 Sep 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/noticias_buenas/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Bitcoin</title>
+      <link>http://localhost:1313/noticias_buenas/tags/bitcoin/</link>
+      <pubDate>Sun, 14 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/noticias_buenas/tags/bitcoin/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Conflicto</title>
       <link>http://localhost:1313/noticias_buenas/tags/conflicto/</link>
       <pubDate>Sun, 14 Sep 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/noticias_buenas/tags/conflicto/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Economia</title>
+      <link>http://localhost:1313/noticias_buenas/tags/economia/</link>
+      <pubDate>Sun, 14 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/noticias_buenas/tags/economia/</guid>
       <description></description>
     </item>
     <item>

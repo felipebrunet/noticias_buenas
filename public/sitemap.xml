@@ -2,13 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/noticias_buenas/tags/bitcoin/</loc>
+    <lastmod>2025-09-14T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/noticias_buenas/tags/conflicto/</loc>
+    <lastmod>2025-09-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/noticias_buenas/tags/economia/</loc>
+    <lastmod>2025-09-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/noticias_buenas/posts/2025-09-14-el-salvador-adopta-bitcoin/</loc>
     <lastmod>2025-09-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/noticias_buenas/tags/geopolitica/</loc>
     <lastmod>2025-09-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/noticias_buenas/posts/2025-09-14-guerra-en-ucrania/</loc>
+    <lastmod>2025-09-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/noticias_buenas/posts/2025-09-14-invasion-rusia-ucrania/</loc>
     <lastmod>2025-09-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/noticias_buenas/</loc>
