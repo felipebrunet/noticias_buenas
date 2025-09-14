@@ -9,7 +9,8 @@ import re
 # Get the API key from the environment variable set in GitHub Actions
 API_KEY = os.getenv("GEMINI_API_KEY")
 # The question to ask Gemini. We ask it to provide a title on the first line.
-PROMPT = "Dime una noticia relevante de entre 2000 y hoy del mundo. Tu texto debe tener en la primera línea un título de máximo 4 palabras y a partir de la segunda línea, el contenido, indicando la URL de la o las fuentes."
+PROMPT = "Dime una noticia relevante de entre 2015 y hoy del mundo. Tu texto debe tener en la primera línea un título de máximo 4 palabras, a partir de la segunda línea, el contenido, indicando la URL de la o las fuentes. En la última línea, debes indicar los tags de la noticia, pueden ser 1 o 2, como prefieras"
+# PROMPT = "Dime una noticia relevante de entre 2015 y hoy del mundo. Tu texto debe tener en la primera línea un título de máximo 4 palabras y a partir de la segunda línea, el contenido, indicando la URL de la o las fuentes."
 # The directory where Hugo posts are stored
 POSTS_DIR = "content/posts"
 # --- End Configuration ---
@@ -33,10 +34,29 @@ def create_new_post():
         print("Querying Gemini API...")
         response = model.generate_content(PROMPT)
         
-        # The first line of the response is the title, the rest is the body
-        parts = response.text.strip().split('\n', 1)
-        title = parts[0].strip()
-        body = parts[1].strip() if len(parts) > 1 else "No content was generated."
+        # The response is split into lines.
+        # First line: Title
+        # Middle lines: Body
+        # Last line: Tags
+        lines = response.text.strip().split('\n')
+        
+        if len(lines) < 2: # Must have at least a title and a tags line
+            print("Error: The response from Gemini did not have the expected format (title, ..., tags).")
+            print(f"Response received:\n{response.text}")
+            sys.exit(1)
+
+        title = lines[0].strip()
+        
+        # The last line contains the tags, which may be prefixed with "Tags: "
+        tags_line = lines[-1].strip()
+        if tags_line.lower().startswith("tags:"):
+            tags_string = tags_line[len("tags:"):].strip()
+        else:
+            tags_string = tags_line
+        
+        # The body is everything between the title and the tags line
+        body_lines = lines[1:-1]
+        body = "\n".join(body_lines).strip() if body_lines else "No content was generated."
 
         # Create a slug from the title (e.g., "My Great Story" -> "my-great-story")
         # Transliterate characters to their basic ASCII representation (e.g., "acción" -> "accion")
@@ -50,11 +70,18 @@ def create_new_post():
         filename = f"{today.strftime('%Y-%m-%d')}-{slug}.md"
         filepath = os.path.join(POSTS_DIR, filename)
 
+        # Create a YAML-formatted list of tags for the front matter
+        tags_list = [tag.strip() for tag in tags_string.split(",") if tag.strip()]
+        # Format each tag as a double-quoted string for the YAML list.
+        quoted_tags = [f'"{tag}"' for tag in tags_list]
+        tags_yaml = f"[{', '.join(quoted_tags)}]"
+
         # Create the front matter and body for the post
         content = f"""---
 title: "{title.replace('"', "'")}"
 date: "{today.isoformat()}"
 draft: false
+tags: {tags_yaml}
 type: "post"
 ---
 

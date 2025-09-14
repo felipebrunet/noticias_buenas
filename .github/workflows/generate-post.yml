@@ -1,9 +1,9 @@
-name: Generate Weekly Post
+name: Generate Daily Post
 
 on:
-  # Runs once a week on Monday at 08:00 UTC
+  # Runs daily at 08:00 UTC
   schedule:
-    - cron: '0 8 * * 1'
+    - cron: '0 8 * * *'
   
   # Allows you to run this workflow manually from the Actions tab for testing
   workflow_dispatch:

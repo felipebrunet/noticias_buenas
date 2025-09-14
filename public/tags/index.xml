@@ -2,10 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Noticias Buenas</title>
-    <link>http://localhost:1313/tags/</link>
+    <link>http://localhost:1313/noticias_buenas/tags/</link>
     <description>Recent content in Tags on Noticias Buenas</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 Sep 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/noticias_buenas/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pandemia</title>
+      <link>http://localhost:1313/noticias_buenas/tags/pandemia/</link>
+      <pubDate>Fri, 12 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/noticias_buenas/tags/pandemia/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Salud Global</title>
+      <link>http://localhost:1313/noticias_buenas/tags/salud-global/</link>
+      <pubDate>Fri, 12 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/noticias_buenas/tags/salud-global/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>
