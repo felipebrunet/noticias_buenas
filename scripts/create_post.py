@@ -9,7 +9,7 @@ import re
 # Get the API key from the environment variable set in GitHub Actions
 API_KEY = os.getenv("GEMINI_API_KEY")
 # The question to ask Gemini. We ask it to provide a title on the first line.
-PROMPT = "Dime una noticia relevante de entre 2015 y hoy del mundo. Tu texto debe tener en la primera línea un título de máximo 4 palabras, a partir de la segunda línea, el contenido, indicando la URL de la o las fuentes. En la última línea, debes indicar los tags de la noticia, pueden ser 1 o 2, como prefieras"
+PROMPT = "Dime una noticia relevante de entre 2015 y hoy del mundo. La noticia debe ser de uno de estos 4 temas: Economía, Bitcoin, Ciencia o Agricultura. Tu texto debe tener en la primera línea un título de máximo 4 palabras, a partir de la segunda línea, el contenido, indicando la URL de la o las fuentes. En la última línea, debes indicar los tags de la noticia, pueden ser 1 o 2, como prefieras"
 # PROMPT = "Dime una noticia relevante de entre 2015 y hoy del mundo. Tu texto debe tener en la primera línea un título de máximo 4 palabras y a partir de la segunda línea, el contenido, indicando la URL de la o las fuentes."
 # The directory where Hugo posts are stored
 POSTS_DIR = "content/posts"
@@ -71,9 +71,14 @@ def create_new_post():
         filepath = os.path.join(POSTS_DIR, filename)
 
         # Create a YAML-formatted list of tags for the front matter
-        tags_list = [tag.strip() for tag in tags_string.split(",") if tag.strip()]
+        raw_tags = [tag.strip() for tag in tags_string.split(",") if tag.strip()]
+        
+        # Normalize tags to remove special characters (e.g., "innovación" -> "innovacion")
+        normalized_tags = [unicodedata.normalize('NFD', tag).encode('ascii', 'ignore').decode('utf-8') for tag in raw_tags]
+
         # Format each tag as a double-quoted string for the YAML list.
-        quoted_tags = [f'"{tag}"' for tag in tags_list]
+        # Also, make tags lowercase, which is a common convention.
+        quoted_tags = [f'"{tag.lower()}"' for tag in normalized_tags]
         tags_yaml = f"[{', '.join(quoted_tags)}]"
 
         # Create the front matter and body for the post
