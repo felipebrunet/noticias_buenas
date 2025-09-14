@@ -81,8 +81,8 @@ def create_new_post():
 title: "{title.replace('"', "'")}"
 date: "{today.isoformat()}"
 draft: false
-tags: {tags_yaml}
 type: "post"
+tags: {tags_yaml}
 ---
 
 {body}
