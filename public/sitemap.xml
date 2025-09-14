@@ -5,7 +5,7 @@
     <loc>http://localhost:1313/noticias_buenas/tags/conflicto/</loc>
     <lastmod>2025-09-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/noticias_buenas/tags/geopol%C3%ADtica/</loc>
+    <loc>http://localhost:1313/noticias_buenas/tags/geopolitica/</loc>
     <lastmod>2025-09-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/noticias_buenas/posts/2025-09-14-guerra-en-ucrania/</loc>
@@ -19,6 +19,12 @@
   </url><url>
     <loc>http://localhost:1313/noticias_buenas/tags/</loc>
     <lastmod>2025-09-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/noticias_buenas/tags/covid-19/</loc>
+    <lastmod>2025-09-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/noticias_buenas/tags/global/</loc>
+    <lastmod>2025-09-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/noticias_buenas/posts/2025-09-13-pandemia-global-covid-19/</loc>
     <lastmod>2025-09-13T00:00:00+00:00</lastmod>

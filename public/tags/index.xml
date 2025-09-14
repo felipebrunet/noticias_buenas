@@ -16,10 +16,24 @@
       <description></description>
     </item>
     <item>
-      <title>Geopolítica</title>
-      <link>http://localhost:1313/noticias_buenas/tags/geopol%C3%ADtica/</link>
+      <title>Geopolitica</title>
+      <link>http://localhost:1313/noticias_buenas/tags/geopolitica/</link>
       <pubDate>Sun, 14 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/noticias_buenas/tags/geopol%C3%ADtica/</guid>
+      <guid>http://localhost:1313/noticias_buenas/tags/geopolitica/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Covid 19</title>
+      <link>http://localhost:1313/noticias_buenas/tags/covid-19/</link>
+      <pubDate>Sat, 13 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/noticias_buenas/tags/covid-19/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Global</title>
+      <link>http://localhost:1313/noticias_buenas/tags/global/</link>
+      <pubDate>Sat, 13 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/noticias_buenas/tags/global/</guid>
       <description></description>
     </item>
     <item>
