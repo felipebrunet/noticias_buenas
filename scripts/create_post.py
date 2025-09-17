@@ -1,16 +1,18 @@
 import os
 import datetime
 import sys
-import google.generativeai as genai
+# import google.generativeai as genai
 import unicodedata
 import re
+import requests
 
 # --- Configuration ---
 # Get the API key from the environment variable set in GitHub Actions
-API_KEY = os.getenv("GEMINI_API_KEY")
-# The question to ask Gemini. We ask it to provide a title on the first line.
-PROMPT = "Dime una noticia relevante de entre 2015 y hoy del mundo. La noticia debe ser de uno de estos 4 temas: Economía, Bitcoin, Ciencia o Agricultura. Tu texto debe tener en la primera línea un título de máximo 4 palabras, a partir de la segunda línea, el contenido, indicando la URL de la o las fuentes. En la última línea, debes indicar los tags de la noticia, pueden ser 1 o 2, como prefieras"
-# PROMPT = "Dime una noticia relevante de entre 2015 y hoy del mundo. Tu texto debe tener en la primera línea un título de máximo 4 palabras y a partir de la segunda línea, el contenido, indicando la URL de la o las fuentes."
+API_KEY = os.getenv("NANOGPT_API_KEY")
+BASE_URL = "https://nano-gpt.com/api/v1"
+# The question to ask NANOGPT. We ask it to provide a title on the first line.
+# PROMPT = "Dime una noticia relevante de entre 2015 y hoy del mundo. La noticia debe ser de uno de estos 4 temas: Economía, Bitcoin, Ciencia o Agricultura. Tu texto debe tener en la primera línea un título de máximo 4 palabras, a partir de la segunda línea, el contenido, indicando la URL de la o las fuentes. En la última línea, debes indicar los tags de la noticia, pueden ser 1 o 2, como prefieras"
+PROMPT = "Dime sólo una noticia relevante reciente (último mes). Tu texto debe tener en la primera línea un título de máximo 4 palabras, a partir de la segunda línea, el contenido, indicando la URL de la o las fuentes. En la última línea debes indicar los tags de la noticia, pueden ser 1 o 2 tags, como prefieras"
 # The directory where Hugo posts are stored
 POSTS_DIR = "content/posts"
 # --- End Configuration ---
@@ -28,20 +30,41 @@ def create_new_post():
 
     try:
         # Configure the Gemini client
-        genai.configure(api_key=API_KEY)
-        model = genai.GenerativeModel('gemini-2.5-flash')
+        # genai.configure(api_key=API_KEY)
+        # model = genai.GenerativeModel('gemini-2.5-flash')
 
-        print("Querying Gemini API...")
-        response = model.generate_content(PROMPT)
+        print("Querying NANO API...")
+        # print("Querying Gemini API...")
+
+        headers = {
+            "Authorization": f"Bearer {API_KEY}",
+            "Content-Type": "application/json"
+        }
+
+        response = requests.post(
+            f"{BASE_URL}/chat/completions",
+            headers=headers,
+            json={
+                "model": "gpt-4o-mini-search-preview",
+                "messages": [
+                    {"role": "user", "content": f"{PROMPT}"}
+                ]
+            }
+        )
+
+        texto = response.json()['choices'][0]['message']['content']
+
+        # response = model.generate_content(PROMPT)
         
         # The response is split into lines.
         # First line: Title
         # Middle lines: Body
         # Last line: Tags
-        lines = response.text.strip().split('\n')
+        # lines = response.text.strip().split('\n')
+        lines = texto.strip().split('\n')
         
         if len(lines) < 2: # Must have at least a title and a tags line
-            print("Error: The response from Gemini did not have the expected format (title, ..., tags).")
+            print("Error: The response from NANO did not have the expected format (title, ..., tags).")
             print(f"Response received:\n{response.text}")
             sys.exit(1)
 
