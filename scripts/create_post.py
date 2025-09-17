@@ -8,7 +8,7 @@ import requests
 
 # --- Configuration ---
 # Get the API key from the environment variable set in GitHub Actions
-API_KEY = os.getenv("NANOGPT_API_KEY")
+API_KEY = os.getenv("GEMINI_API_KEY")
 BASE_URL = "https://nano-gpt.com/api/v1"
 # The question to ask NANOGPT. We ask it to provide a title on the first line.
 # PROMPT = "Dime una noticia relevante de entre 2015 y hoy del mundo. La noticia debe ser de uno de estos 4 temas: Economía, Bitcoin, Ciencia o Agricultura. Tu texto debe tener en la primera línea un título de máximo 4 palabras, a partir de la segunda línea, el contenido, indicando la URL de la o las fuentes. En la última línea, debes indicar los tags de la noticia, pueden ser 1 o 2, como prefieras"
@@ -22,7 +22,7 @@ def create_new_post():
     Queries the Gemini API and creates a new Hugo post from the response.
     """
     if not API_KEY:
-        print("Error: GEMINI_API_KEY environment variable not set.")
+        print("Error: NANOGPT_API_KEY environment variable not set.")
         sys.exit(1)
 
     # Ensure the posts directory exists before trying to write to it
