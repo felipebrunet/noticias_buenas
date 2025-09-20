@@ -12,7 +12,7 @@ API_KEY = os.getenv("GEMINI_API_KEY")
 BASE_URL = "https://nano-gpt.com/api/v1"
 # The question to ask NANOGPT. We ask it to provide a title on the first line.
 # PROMPT = "Dime una noticia relevante de entre 2015 y hoy del mundo. La noticia debe ser de uno de estos 4 temas: Economía, Bitcoin, Ciencia o Agricultura. Tu texto debe tener en la primera línea un título de máximo 4 palabras, a partir de la segunda línea, el contenido, indicando la URL de la o las fuentes. En la última línea, debes indicar los tags de la noticia, pueden ser 1 o 2, como prefieras"
-PROMPT = "Dime sólo una noticia relevante reciente (último mes). Tu texto debe tener en la primera línea un título de máximo 4 palabras, a partir de la segunda línea, el contenido, indicando la URL de la o las fuentes. En la última línea debes indicar los tags de la noticia, pueden ser 1 o 2 tags, como prefieras"
+PROMPT = "Dime sólo una noticia relevante reciente (último mes) del mundo. Tu texto debe tener en la primera línea un título de máximo 4 palabras, a partir de la segunda línea, el contenido, indicando la URL de la o las fuentes. En la última línea debes indicar los tags de la noticia, pueden ser 1 o 2 tags, como prefieras"
 # The directory where Hugo posts are stored
 POSTS_DIR = "content/posts"
 # --- End Configuration ---
