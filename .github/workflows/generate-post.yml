@@ -1,9 +1,9 @@
-name: Generate Daily Post
+name: Generate Yearly Post
 
 on:
-  # Runs daily at 08:00 UTC (04:00 AM CLST / 05:00 AM CLT)
+  # Runs once a year on January 1st at 08:00 UTC
   schedule:
-    - cron: '0 8 * * *'
+    - cron: '0 8 1 1 *'
   
   # Allows you to run this workflow manually from the Actions tab for testing
   workflow_dispatch:
